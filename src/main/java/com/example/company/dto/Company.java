@@ -1,6 +1,5 @@
 package com.example.company.dto;
 
-import com.example.company.model.CompanyEntity;
 import com.example.company.model.EmployeeEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

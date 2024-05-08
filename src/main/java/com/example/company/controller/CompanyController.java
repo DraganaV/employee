@@ -1,7 +1,6 @@
 package com.example.company.controller;
 
 import com.example.company.dto.Company;
-import com.example.company.exceptions.DataNotFoundException;
 import com.example.company.service.CompanyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

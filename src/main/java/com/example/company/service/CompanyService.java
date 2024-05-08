@@ -5,13 +5,10 @@ import com.example.company.exceptions.DataNotFoundException;
 import com.example.company.mapper.CompanyMapper;
 import com.example.company.model.CompanyEntity;
 import com.example.company.repository.CompanyRepository;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
