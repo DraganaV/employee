@@ -1,7 +1,7 @@
 package com.example.company.repository;
 
-import com.example.company.model.CompanyEntity;
-import com.example.company.model.QCompanyEntity;
+import com.example.company.model.QUserEntity;
+import com.example.company.model.UserEntity;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
@@ -11,18 +11,18 @@ import java.util.Optional;
 
 @Repository
 @RequiredArgsConstructor
-public class CompanyRepository {
+public class UserRepository {
 
     private final EntityManager entityManager;
 
-    public Optional<CompanyEntity> findCompanyById(Integer id) {
+    public Optional<UserEntity> findUserByUsername(String username) {
         JPAQueryFactory queryFactory = new JPAQueryFactory(entityManager);
-        QCompanyEntity qCompanyEntity = QCompanyEntity.companyEntity;
+        QUserEntity qUserEntity = QUserEntity.userEntity;
 
         return Optional.ofNullable(
                 queryFactory
-                .selectFrom(qCompanyEntity)
-                .where(qCompanyEntity.id.eq(id))
+                .selectFrom(qUserEntity)
+                .where(qUserEntity.username.eq(username))
                 .fetchOne()
         );
     }

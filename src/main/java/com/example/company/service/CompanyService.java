@@ -42,7 +42,7 @@ public class CompanyService {
         log.info("Fetching company info for company id = {}", id);
 
         return companyRepository
-                .getCompanyById(id)
+                .findCompanyById(id)
                 .map(companyMapper::fromEntityToCompany)
                 .orElseThrow(()-> {
                     log.warn(MessageConstants.NO_COMPANY_INFO_AVAILABLE + id);
