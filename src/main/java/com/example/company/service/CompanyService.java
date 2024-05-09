@@ -6,6 +6,7 @@ import com.example.company.exceptions.DataNotFoundException;
 import com.example.company.mapper.CompanyMapper;
 import com.example.company.model.CompanyEntity;
 import com.example.company.repository.CompanyRepository;
+import com.example.company.repository.CompanyRepositoryJpa;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -18,12 +19,13 @@ import java.util.stream.Collectors;
 @Slf4j
 public class CompanyService {
 
+    private final CompanyRepositoryJpa companyRepositoryJpa;
     private final CompanyRepository companyRepository;
     private final CompanyMapper companyMapper;
 
     public List<Company> getAllCompanies() {
         log.info("Fetching companies info ...");
-        List<CompanyEntity> companies = companyRepository.findAll();
+        List<CompanyEntity> companies = companyRepositoryJpa.findAll();
 
         if (companies.isEmpty()) {
             log.warn(MessageConstants.NO_COMPANIES_INFO_AVAILABLE);
@@ -40,10 +42,10 @@ public class CompanyService {
         log.info("Fetching company info for company id = {}", id);
 
         return companyRepository
-                .findById(id)
+                .getCompanyById(id)
                 .map(companyMapper::fromEntityToCompany)
                 .orElseThrow(()-> {
-                    log.warn(MessageConstants.NO_COMPANY_INFO_AVAILABLE);
+                    log.warn(MessageConstants.NO_COMPANY_INFO_AVAILABLE + id);
                     throw new DataNotFoundException(MessageConstants.NO_COMPANY_INFO_AVAILABLE + id);
                 });
     }
