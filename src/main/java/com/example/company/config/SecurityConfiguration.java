@@ -1,5 +1,6 @@
 package com.example.company.config;
 
+import com.example.company.constants.MessageConstants;
 import com.example.company.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -15,7 +16,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 @Configuration
 @RequiredArgsConstructor
@@ -41,8 +41,8 @@ public class SecurityConfiguration {
     UserDetailsService userDetailsService() {
         return username -> userRepository
                 .findUserByUsername(username)
-                .map((userEntity)->new User(userEntity.getUsername(), Arrays.toString(userEntity.getPassword()), new ArrayList<>()))
-                .orElseThrow(() -> new UsernameNotFoundException("User with provided username doesnot exist."));
+                .map((userEntity)->new User(userEntity.getUsername(), String.valueOf(userEntity.getPassword()), new ArrayList<>()))
+                .orElseThrow(() -> new UsernameNotFoundException(MessageConstants.USERNAME_NOT_FOUND));
     }
 
     @Bean
