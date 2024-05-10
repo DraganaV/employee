@@ -1,23 +1,21 @@
 package com.example.company.dto;
 
-import com.example.company.model.EmployeeEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
-
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
 @Getter
-public class Company {
+public class EmployeeRequest {
 
-    private Integer id;
-    private String name;
-    private String domain;
+    private String firstName;
+    private String lastName;
     private String address;
     private String email;
-    private List<EmployeeEntity> employees;
+    private String title;
+    private Double salary;
+    private String department;
 }

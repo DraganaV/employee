@@ -27,6 +27,6 @@ public class CompanyEntity {
     private String email;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "company")
+    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL)
     private List<EmployeeEntity> employees;
 }

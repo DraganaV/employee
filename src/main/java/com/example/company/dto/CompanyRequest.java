@@ -12,12 +12,10 @@ import java.util.List;
 @AllArgsConstructor
 @Setter
 @Getter
-public class Company {
-
-    private Integer id;
+public class CompanyRequest {
     private String name;
     private String domain;
     private String address;
     private String email;
-    private List<EmployeeEntity> employees;
+    private List<EmployeeRequest> employees;
 }

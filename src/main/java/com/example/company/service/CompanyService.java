@@ -2,6 +2,7 @@ package com.example.company.service;
 
 import com.example.company.constants.MessageConstants;
 import com.example.company.dto.Company;
+import com.example.company.dto.CompanyRequest;
 import com.example.company.exceptions.DataNotFoundException;
 import com.example.company.mapper.CompanyMapper;
 import com.example.company.model.CompanyEntity;
@@ -48,5 +49,11 @@ public class CompanyService {
                     log.warn(MessageConstants.NO_COMPANY_INFO_AVAILABLE + id);
                     throw new DataNotFoundException(MessageConstants.NO_COMPANY_INFO_AVAILABLE + id);
                 });
+    }
+
+    public long postCompany(CompanyRequest companyRequest) {
+        //return companyRepository
+                //.postCompany(companyMapper.fromCompanyToEntity(companyRequest));
+        return companyRepositoryJpa.save(companyMapper.fromCompanyToEntity(companyRequest)).getId();
     }
 }
