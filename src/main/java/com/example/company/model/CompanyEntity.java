@@ -1,9 +1,7 @@
 package com.example.company.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,6 +18,7 @@ import java.util.List;
 public class CompanyEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private String name;
@@ -27,6 +26,7 @@ public class CompanyEntity {
     private String address;
     private String email;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "company")
     private List<EmployeeEntity> employees;
 }
